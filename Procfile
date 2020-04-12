@@ -1,1 +1,1 @@
-web: python jikanwari_bot.py
+web: python jikanwari.py
