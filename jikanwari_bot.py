@@ -61,21 +61,6 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    #URLと
-    values = []
-    for month in range(1,13):
-      file_path = '%s.jpg' %month
-      dbx_path = "/" + file_path
-
-      links = dbx.sharing_list_shared_links(path=dbx_path, direct_only=True).links
-      url = links[0].url
-      #urlで画像を表示させる
-      url = url.replace('www.dropbox','dl.dropboxusercontent').replace('?dl=0','')
-      values.append(url)
-    keys = ['January','February','March','April','May','June','July','August','September','October','November','December']
-    months = [12,11,10,9,8,7,6,5,4,3,2,1]
-    pic_id = dict(zip(keys, values))
-
     text = event.message.text
     for month in months:
         msg = 'J' + str(month)
