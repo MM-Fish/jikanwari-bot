@@ -1,17 +1,17 @@
-from flask import Flask, request, abort
+# from flask import Flask, request, abort
 import os
 import dropbox
-from linebot import (
-    LineBotApi, WebhookHandler
-)
-from linebot.exceptions import (
-    InvalidSignatureError
-)
-from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
-)
+# from linebot import (
+#     LineBotApi, WebhookHandler
+# )
+# from linebot.exceptions import (
+#     InvalidSignatureError
+# )
+# from linebot.models import (
+#     MessageEvent, TextMessage, TextSendMessage,
+# )
 
-app = Flask(__name__)
+# app = Flask(__name__)
 DBX_ACCESS_TOKEN = os.environ["DBX_ACCESS_TOKEN"]
 dbx = dropbox.Dropbox(DBX_ACCESS_TOKEN)
 
