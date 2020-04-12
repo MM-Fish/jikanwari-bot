@@ -29,7 +29,6 @@ keys = ['January','February','March','April','May','June','July','August','Septe
 months = [12,11,10,9,8,7,6,5,4,3,2,1]
 pic_id = dict(zip(keys, values))
 
-
 #環境変数取得
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
 YOUR_CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
