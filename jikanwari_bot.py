@@ -12,18 +12,16 @@ from linebot.models import (
 )
 
 app = Flask(__name__)
-
 DBX_ACCESS_TOKEN = os.environ["DBX_ACCESS_TOKEN"]
 dbx = dropbox.Dropbox(DBX_ACCESS_TOKEN)
 
 values = []
 for month in range(1,13):
-  file_path = '%s.jpg' %month
-  dbx_path = "/" + file_path
+  local_path = '%s.jpg' %month
+  dbx_path = "/" + local_path
 
   links = dbx.sharing_list_shared_links(path=dbx_path, direct_only=True).links
   url = links[0].url
-  #urlで画像を表示させる
   url = url.replace('www.dropbox','dl.dropboxusercontent').replace('?dl=0','')
   values.append(url)
 
@@ -40,7 +38,7 @@ handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 @app.route("/")
 def hello_world():
-    return "hello world!!"
+    return "hello world!"
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -72,6 +70,7 @@ def handle_message(event):
             TextSendMessage(text = 'Jikanwari for ' + key),
             TextSendMessage(text = pic_id[key])
             ])
+
 
 if __name__ == "__main__":
 #    app.run()
