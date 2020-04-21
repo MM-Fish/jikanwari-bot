@@ -32,6 +32,6 @@ for month in range(1,13):
   setting = dropbox.sharing.SharedLinkSettings(requested_visibility=dropbox.sharing.RequestedVisibility.public)
   try:       
     link = dbx.sharing_create_shared_link_with_settings(path=dbx_path, settings=setting)
+    print(link)
   except:
     print("既に共有されています。")
-print(link)
