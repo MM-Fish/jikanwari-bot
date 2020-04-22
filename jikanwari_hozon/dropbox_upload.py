@@ -14,6 +14,13 @@ dbx_path = '/' + local_path
 f = open(local_path, 'rb')
 dbx.files_upload(f.read(),dbx_path, mode=dropbox.files.WriteMode.overwrite)
 f.close()
+# 共有リンク作成
+setting = dropbox.sharing.SharedLinkSettings(requested_visibility=dropbox.sharing.RequestedVisibility.public)
+try:       
+  link = dbx.sharing_create_shared_link_with_settings(path=dbx_path, settings=setting)
+  print(link)
+except:
+  print("既に共有されています。")
 
 # 画像ディレクトリに移動
 os.chdir("gazou")

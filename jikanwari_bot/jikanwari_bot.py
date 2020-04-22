@@ -16,6 +16,14 @@ DBX_ACCESS_TOKEN = os.environ["DBX_ACCESS_TOKEN"]
 dbx = dropbox.Dropbox(DBX_ACCESS_TOKEN)
 
 values = []
+#時間割URL格納
+dbx_path = "/jikanwari.xlsx"
+links = dbx.sharing_list_shared_links(path=dbx_path, direct_only=True).links
+url = links[0].url
+url = url.replace('www.dropbox','dl.dropboxusercontent').replace('?dl=0','')
+values.append(url)
+
+#画像URL格納
 for month in range(1,13):
   local_path = '%s.jpg' %month
   dbx_path = "/" + local_path
@@ -25,8 +33,8 @@ for month in range(1,13):
   url = url.replace('www.dropbox','dl.dropboxusercontent').replace('?dl=0','')
   values.append(url)
 
-keys = ['January','February','March','April','May','June','July','August','September','October','November','December']
-months = [12,11,10,9,8,7,6,5,4,3,2,1]
+keys = ['2020 school year','January','February','March','April','May','June','July','August','September','October','November','December']
+months = [12,11,10,9,8,7,6,5,4,3,2,1,0]
 pic_id = dict(zip(keys, values))
 
 #環境変数取得
@@ -63,8 +71,7 @@ def handle_message(event):
     for month in months:
         msg = 'J' + str(month)
         if msg in text:
-            a = month - 1
-            key = keys[a]
+            key = keys[month]
             line_bot_api.reply_message(
             event.reply_token,[
             TextSendMessage(text = 'Jikanwari for ' + key),
