@@ -33,7 +33,7 @@ for month in range(1,13):
   url = url.replace('www.dropbox','dl.dropboxusercontent').replace('?dl=0','')
   values.append(url)
 
-keys = ['2020 school year','January','February','March','April','May','June','July','August','September','October','November','December']
+keys = ['2020','January','February','March','April','May','June','July','August','September','October','November','December']
 months = [12,11,10,9,8,7,6,5,4,3,2,1,0]
 pic_id = dict(zip(keys, values))
 
